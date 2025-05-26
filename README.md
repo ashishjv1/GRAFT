@@ -21,41 +21,8 @@ pip install -r requirements.txt
 
 ## Quick Start
 ```bash
-# Basic usage with CPU
-python GRAFT.py \
-    --numEpochs=200 \
-    --batch_size=200 \
-    --device="cpu" \
-    --optimizer="sgd" \
-    --lr=0.1 \
-    --weight_decay=4e-5 \
-    --numClasses=10 \
-    --dataset="cifar10" \
-    --model="resnext" \
-    --fraction=0.25 \
-    --select_iter=25 \
-    --save_pickle \
-    --dataset_dir="data10" \
-    --decomp="torch"
 
-# Usage with GPU
-python GRAFT.py \
-    --numEpochs=200 \
-    --batch_size=200 \
-    --device="cuda" \
-    --optimizer="sgd" \
-    --lr=0.1 \
-    --weight_decay=4e-5 \
-    --numClasses=10 \
-    --dataset="cifar10" \
-    --model="resnext" \
-    --fraction=0.25 \
-    --select_iter=25 \
-    --save_pickle \
-    --dataset_dir="data10" \
-    --decomp="torch" \
-
-# Usage with GPU and warm-starting  
+# Basic Usage on GPU and warm-starting  
 python GRAFT.py \
     --numEpochs=200 \
     --batch_size=200 \
