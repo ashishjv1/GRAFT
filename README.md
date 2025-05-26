@@ -8,7 +8,7 @@ GRAFT uses gradient information and feature decomposition to select the most inf
 ## Features
 - Smart sample selection using gradient-based importance scoring
 - Support for multiple architectures (ResNet, ResNeXT, EfficientNet)
-- Compatible with major datasets (CIFAR10, CIFAR100, ImageNet)
+- Compatible with major datasets (CIFAR10, CIFAR100, TinyImageNet, Caltech256)
 - Experiment tracking with WandB
 - Carbon footprint tracking with eco2AI
 
@@ -38,7 +38,7 @@ python GRAFT.py \
     --dataset_dir="data10" \
     --decomp="torch"
 
-# Training with GPU
+# Usage with GPU
 python GRAFT.py \
     --numEpochs=200 \
     --batch_size=200 \
@@ -53,7 +53,25 @@ python GRAFT.py \
     --select_iter=25 \
     --save_pickle \
     --dataset_dir="data10" \
-    --decomp="torch"
+    --decomp="torch" \
+
+# Usage with GPU and warm-starting  
+python GRAFT.py \
+    --numEpochs=200 \
+    --batch_size=200 \
+    --device="cuda" \
+    --optimizer="sgd" \
+    --lr=0.1 \
+    --weight_decay=4e-5 \
+    --numClasses=10 \
+    --dataset="cifar10" \
+    --model="resnext" \
+    --fraction=0.25 \
+    --select_iter=25 \
+    --save_pickle \
+    --dataset_dir="data10" \
+    --decomp="torch" \
+    --warm_start
 ```
 
 ### Key Arguments
@@ -68,6 +86,7 @@ python GRAFT.py \
 - `select_iter`: Selection interval in epochs
 - `decomp`: Decomposition backend ("numpy" or "torch")
 - `save_pickle`: Save decomposition results for reuse
+- `warm_start`: To warm start for the first few epochs (Normally until the first selection Iteration select_iter) 
 
 ## Project Structure
 ```
