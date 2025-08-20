@@ -66,11 +66,3 @@ GRAFT/
 └── examples/       # Usage examples
 ```
 
-## Citation
-```bibtex
-@article{graft2025,
-  title={GRAFT: Gradient-Aware Fast MaxVol Technique for Dynamic Data Sampling},
-  author={Ashish Jha},
-  year={2025}
-}
-```
