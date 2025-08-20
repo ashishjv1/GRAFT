@@ -66,12 +66,17 @@ GRAFT/
 └── examples/       # Usage examples
 ```
 
+## Citation
+
+```bibtex
 @misc{jha2025graftgradientawarefastmaxvol,
-  title={GRAFT: Gradient-Aware Fast MaxVol Technique for Dynamic Data Sampling}, 
-  author={Ashish Jha and Anh huy Phan and Razan Dibo and Valentin Leplat},
-  year={2025},
-  eprint={2508.13653},
-  archivePrefix={arXiv},
-  primaryClass={cs.LG},
-  url={https://arxiv.org/abs/2508.13653}
+  title         = {GRAFT: Gradient-Aware Fast MaxVol Technique for Dynamic Data Sampling},
+  author        = {Ashish Jha and Anh Huy Phan and Razan Dibo and Valentin Leplat},
+  year          = {2025},
+  eprint        = {2508.13653},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2508.13653}
 }
+
+
