@@ -10,7 +10,7 @@ def calnorm(idxgrads, fgrads):
 
 
     pinverse = np.linalg.pinv(ss_grad)
-    x = pinverse @ b_
+    x = np.matmul(pinverse, b_)
      
     x = torch.FloatTensor(x)
     norm_residual = torch.norm(ss_grad @ x - torch.FloatTensor(b_))

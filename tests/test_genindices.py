@@ -9,7 +9,7 @@ from torch.utils.data import TensorDataset, DataLoader
 from graft.genindices import sample_selection
 from graft.decompositions import feature_sel
 
-class TestModel(torch.nn.Module):
+class MockModel(torch.nn.Module):
     def __init__(self):
         super().__init__()
         self.features = torch.nn.Sequential(
@@ -42,7 +42,7 @@ class TestGenIndices(unittest.TestCase):
         self.data3 = feature_sel(self.dataloader, 32, device="cpu", decomp_type="numpy")
         
         # Use custom test model that supports last/freeze arguments
-        self.model = TestModel()
+        self.model = MockModel()
         self.model_state = self.model.state_dict()
         
     def test_sample_selection_size(self):
@@ -83,6 +83,7 @@ class TestGenIndices(unittest.TestCase):
     def test_sample_selection_deterministic(self):
         # Test if selection is deterministic with same seed
         torch.manual_seed(42)
+        np.random.seed(42)
         indices1 = sample_selection(
             self.dataloader, self.data3, self.model,
             self.model_state, 32, 0.5,
@@ -90,6 +91,7 @@ class TestGenIndices(unittest.TestCase):
         )
         
         torch.manual_seed(42)
+        np.random.seed(42)
         indices2 = sample_selection(
             self.dataloader, self.data3, self.model,
             self.model_state, 32, 0.5,
