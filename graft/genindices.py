@@ -1,8 +1,8 @@
 import torch
 import itertools
-from decompositions import index_sel
+from .decompositions import index_sel
 from tqdm import tqdm
-from grad_dist import calnorm
+from .grad_dist import calnorm
 import numpy as np
 import math
 import gc

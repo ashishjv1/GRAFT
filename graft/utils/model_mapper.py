@@ -1,4 +1,4 @@
-from models import ResNet18,ResNet50, EfficientNetB0, ResNet9, MobileNetV2, MobileNet, ResNet101, ResNet152, ResNeXt29_32x4d, ResNext50_32x4d, ResNext101_32x8d, ResNext101_64x4d, FashionCNN, bertmodel
+from ..models import ResNet18,ResNet50, EfficientNetB0, ResNet9, MobileNetV2, MobileNet, ResNet101, ResNet152, ResNeXt29_32x4d, ResNext50_32x4d, ResNext101_32x8d, ResNext101_64x4d, FashionCNN, bertmodel
 
 
 class ModelMapper:

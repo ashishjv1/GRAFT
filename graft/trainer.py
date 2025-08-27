@@ -17,7 +17,7 @@ from tqdm import tqdm
 from .utils.loader import loader
 from .utils.model_mapper import ModelMapper
 from .utils.imagenetselloader import imagenet_selloader
-import graft.utils.pickler as pickler
+from .utils import pickler
 from .decompositions import feature_sel
 from .genindices import sample_selection
 
