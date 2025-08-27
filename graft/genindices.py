@@ -21,9 +21,7 @@ def process_indices(indices):
 
 
 def sample_selection(trainloader, data3, net, clone_dict, batch_size, fraction, sel_iter, numEpochs, device, dataset_name):
-    # Set seeds for reproducibility
-    np.random.seed(42)
-    torch.manual_seed(42)
+    # Note: Seeds should be set by the caller for reproducibility
     
     if dataset_name.lower() == 'boston':
         loss_fn = torch.nn.MSELoss(reduction='mean')
