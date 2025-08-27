@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "graft-pytorch"
-version = "0.1.0"
+version = "0.1.1"
 description = "Gradient-Aware Fast MaxVol Technique for Dynamic Data Sampling"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -38,6 +38,8 @@ dependencies = [
     "scikit-learn>=0.24.2",
     "pillow>=8.3.1",
     "matplotlib>=3.4.3",
+    "transformers>=4.0.0",
+    "medmnist>=2.0.0",
 ]
 
 [project.optional-dependencies]
