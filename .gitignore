@@ -63,3 +63,8 @@ wandb/
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Legacy files to ignore
+trainer.py
+GRAFT.py
+GRAFT_swinft.py

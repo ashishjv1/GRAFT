@@ -11,14 +11,14 @@ from torch import Tensor
 
 __all__ = [
     "ResNet",
-    "resnet18",
-    "resnet34",
-    "resnet50",
-    "resnet101",
-    "resnet152",
-    "resnext50_32x4d",
-    "resnext101_32x8d",
-    "resnext101_64x4d",
+    "ResNet18",
+    "ResNet34", 
+    "ResNet50",
+    "ResNet101",
+    "ResNet152",
+    "ResNext50_32x4d",
+    "ResNext101_32x8d",
+    "ResNext101_64x4d",
     "wide_resnet50_2",
     "wide_resnet101_2",
 ]

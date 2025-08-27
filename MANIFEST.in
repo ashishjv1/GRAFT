@@ -21,6 +21,11 @@ global-exclude *.so
 global-exclude .DS_Store
 global-exclude *.egg-info
 
+# Exclude legacy files
+exclude trainer.py
+exclude GRAFT.py
+exclude GRAFT_swinft.py
+
 # Exclude build directories
 prune build
 prune dist
