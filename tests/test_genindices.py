@@ -5,10 +5,9 @@ import os
 import numpy as np
 from torch.utils.data import TensorDataset, DataLoader
 
-# Add project root to Python path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from genindices import sample_selection
-from decompositions import feature_sel
+# Import from the graft package
+from graft.genindices import sample_selection
+from graft.decompositions import feature_sel
 
 class TestModel(torch.nn.Module):
     def __init__(self):

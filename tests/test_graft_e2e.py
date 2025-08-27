@@ -4,9 +4,10 @@ import os
 import torch
 import tempfile
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from GRAFT import TrainingConfig, ModelTrainer, get_model, prepare_data
-from utils.loader import loader
+# Import from the graft package
+from graft import TrainingConfig, ModelTrainer
+from graft.trainer import get_model, prepare_data
+from graft.utils.loader import loader
 
 class TestGRAFTEndToEnd(unittest.TestCase):
     @classmethod

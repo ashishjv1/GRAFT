@@ -3,8 +3,8 @@ import torch
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from GRAFT import TrainingConfig, ModelTrainer
+# Import from the graft package
+from graft import TrainingConfig, ModelTrainer
 
 class TestGRAFT(unittest.TestCase):
     def setUp(self):
