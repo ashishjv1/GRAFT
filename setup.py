@@ -17,9 +17,9 @@ with open("requirements.txt", "r", encoding="utf-8") as fh:
 
 setup(
     name="graft-pytorch",
-    version="0.1.7",
-    author="Ashish Jha",
-    author_email="Ashish.Jha@skoltech.ru",  # Update with your actual email
+    version="1.0.0",
+    author="Ashish Jha, Anh Huy Phan",
+    author_email="Ashish.Jha@skoltech.ru, a.phan@skoltech.ru",  # Update with your actual email
     description="Gradient-Aware Fast MaxVol Technique for Dynamic Data Sampling",
     long_description=long_description,
     long_description_content_type="text/markdown",

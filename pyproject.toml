@@ -4,16 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "graft-pytorch"
-version = "0.1.7"
+version = "1.0.0"
 description = "Gradient-Aware Fast MaxVol Technique for Dynamic Data Sampling"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "Ashish Jha", email = "Ashish.Jha@skoltech.ru"}
+    {name = "Ashish Jha", email = "Ashish.Jha@skoltech.ru"},
+    {name = "Anh Huy Phan", email = "a.phan@skoltech.ru"}
 ]
 maintainers = [
-    {name = "Ashish Jha", email = "Ashish.Jha@skoltech.ru"}
+    {name = "Ashish Jha", email = "Ashish.Jha@skoltech.ru"},
+    {name = "Anh Huy Phan", email = "a.phan@skoltech.ru"}
 ]
 keywords = ["machine-learning", "deep-learning", "pytorch", "data-sampling", "gradient-based-sampling"]
 classifiers = [
