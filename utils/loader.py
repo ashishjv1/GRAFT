@@ -201,7 +201,7 @@ def loader(dataset, dirs="./cifar10", trn_batch_size=64, val_batch_size=64, tst_
         trainset = torchvision.datasets.CIFAR10(
             root='./data', train=True, download=True, transform=transform_train)
         trainloader = torch.utils.data.DataLoader(
-            trainset, batch_size=trn_batch_size, shuffle=True, num_workers=2)
+            trainset, batch_size=trn_batch_size, shuffle=False, num_workers=2)
 
         testset = torchvision.datasets.CIFAR10(
             root='./data', train=False, download=True, transform=transform_test)
@@ -226,7 +226,7 @@ def loader(dataset, dirs="./cifar10", trn_batch_size=64, val_batch_size=64, tst_
         trainset = torchvision.datasets.CIFAR100(
             root='./data', train=True, download=True, transform=transform_train)
         trainloader = torch.utils.data.DataLoader(
-            trainset, batch_size=trn_batch_size, shuffle=True, num_workers=2)
+            trainset, batch_size=trn_batch_size, shuffle=False, num_workers=2)
 
         testset = torchvision.datasets.CIFAR100(
             root='./data', train=False, download=True, transform=transform_test)
@@ -280,14 +280,3 @@ def loader(dataset, dirs="./cifar10", trn_batch_size=64, val_batch_size=64, tst_
     
     else:
         raise ValueError(f"Dataset {dataset} not supported")
-
-if __name__ == "__main__":
-    # Run some basic tests
-    try:
-        # Test CIFAR10
-        train_l, test_l, train_s, test_s = loader("cifar10")
-        # Test CIFAR100 
-        train_l, test_l, train_s, test_s = loader("cifar100")
-        print("✓ All test cases passed successfully!")
-    except Exception as e:
-        print(f"✗ Test failed: {str(e)}")

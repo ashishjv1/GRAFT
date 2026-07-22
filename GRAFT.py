@@ -184,11 +184,7 @@ class ModelTrainer:
                     train_model = self.model
                     cached_state_dict = copy.deepcopy(train_model.state_dict())
                     clone_dict = copy.deepcopy(train_model.state_dict())
-                    
-                    # Skip selection if no data3 available (for tests)
-                    if self.data3 is None:
-                        continue
-                        
+
                     if not self.config.imgntselloader:
                         indices = sample_selection(self.main_trainloader, self.data3, self.model, 
                                                   clone_dict, self.config.batch_size, self.config.fraction, 

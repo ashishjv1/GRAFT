@@ -91,34 +91,8 @@ def sample_selection(trainloader, data3, net, clone_dict, batch_size, fraction, 
     
     del clone_dict
     del net
-    torch.cuda.empty_cache()    
+    torch.cuda.empty_cache()
     gc.collect()
 
-    # Process collected indices
-    batch_indices = []
-    total_indices = []
-    
-    for batch_idx in indices:
-        if isinstance(batch_idx, list):
-            batch_indices.extend(batch_idx)
-        else:
-            batch_indices.append(batch_idx)
-    
-    # Convert to occurrence count/scores
-    unique_indices = np.unique(batch_indices)
-    scores = np.zeros(len(trainloader.dataset))
-    for idx in batch_indices:
-        scores[idx] += 1
-    
-    # Select top fraction based on scores
-    num_to_select = int(len(trainloader.dataset) * fraction)
-    selected_indices = np.argsort(scores)[::-1][:num_to_select]
-    
-    # Ensure we have exactly the right number of unique indices
-    selected_indices = np.unique(selected_indices)[:num_to_select]
-    
-    final_success_rate = (len(selected_indices) / len(trainloader.dataset)) * 100
-    print(f"Final Selection - Kept {len(selected_indices)}/{len(trainloader.dataset)} samples ({final_success_rate:.2f}%)")
-    
-    return selected_indices
+    return process_indices(indices)
 
