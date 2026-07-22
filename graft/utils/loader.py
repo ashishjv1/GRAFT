@@ -280,3 +280,14 @@ def loader(dataset, dirs="./cifar10", trn_batch_size=64, val_batch_size=64, tst_
     
     else:
         raise ValueError(f"Dataset {dataset} not supported")
+
+if __name__ == "__main__":
+    # Run some basic tests
+    try:
+        # Test CIFAR10
+        train_l, test_l, train_s, test_s = loader("cifar10")
+        # Test CIFAR100 
+        train_l, test_l, train_s, test_s = loader("cifar100")
+        print("✓ All test cases passed successfully!")
+    except Exception as e:
+        print(f"✗ Test failed: {str(e)}")

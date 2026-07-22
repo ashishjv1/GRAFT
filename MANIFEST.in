@@ -1,0 +1,36 @@
+# Include the README and other documentation files
+include README.md
+include LICENSE
+include CITATION.cff
+include requirements.txt
+include pyproject.toml
+
+# Include supplementary materials
+recursive-include supplementary *
+
+# Include example notebooks and scripts
+recursive-include examples *.py *.ipynb
+
+# Include test files
+recursive-include tests *.py
+
+# Exclude unnecessary files
+global-exclude __pycache__
+global-exclude *.py[co]
+global-exclude *.so
+global-exclude .DS_Store
+global-exclude *.egg-info
+
+# Exclude legacy files
+exclude trainer.py
+exclude GRAFT.py
+exclude GRAFT_swinft.py
+
+# Exclude build directories
+prune build
+prune dist
+prune .git
+prune .pytest_cache
+
+# Include package data
+recursive-include graft *.py

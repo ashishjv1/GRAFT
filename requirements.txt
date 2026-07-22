@@ -8,3 +8,5 @@ scikit-learn>=0.24.2
 pillow>=8.3.1
 matplotlib>=3.4.3
 pytest>=6.2.5
+transformers>=4.0.0
+medmnist>=2.0.0
