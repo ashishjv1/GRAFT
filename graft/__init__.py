@@ -1,8 +1,7 @@
 """
 GRAFT: Gradient-Aware Fast MaxVol Technique for Dynamic Data Sampling
 
-A PyTorch implementation of smart sampling for efficient deep learning training
-and intelligent context trimming for cost-effective LLM inference.
+A PyTorch implementation of smart sampling for efficient deep learning training.
 """
 
 __version__ = "1.2.1"
@@ -35,15 +34,6 @@ except ImportError as e:
         def __init__(self, *args, **kwargs):
             raise ImportError("TrainingConfig not available due to missing dependencies")
 
-# Context trimming components (optional dependencies)
-try:
-    from .context_trimming import ContextTrimmer, BudgetManager, ContextPipeline
-    _CONTEXT_TRIMMING_AVAILABLE = True
-except ImportError:
-    _CONTEXT_TRIMMING_AVAILABLE = False
-    import warnings
-    warnings.warn("Context trimming features not available. Install with: pip install graft-pytorch[context]")
-
 # Build __all__ list conditionally
 __all__ = []
 
@@ -52,6 +42,3 @@ if _CORE_AVAILABLE:
 
 if _TRAINER_AVAILABLE:
     __all__.extend(["ModelTrainer", "TrainingConfig"])
-
-if _CONTEXT_TRIMMING_AVAILABLE:
-    __all__.extend(["ContextTrimmer", "BudgetManager", "ContextPipeline"])

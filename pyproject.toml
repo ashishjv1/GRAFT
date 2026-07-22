@@ -56,10 +56,6 @@ tracking = [
     "wandb>=0.12.0",
     "eco2ai>=1.0.0",
 ]
-context = [
-    "sentence-transformers>=2.2.0",
-    "tiktoken>=0.4.0",
-]
 all = [
     "pytest>=6.2.5",
     "pytest-cov",
@@ -68,8 +64,6 @@ all = [
     "flake8",
     "wandb>=0.12.0",
     "eco2ai>=1.0.0",
-    "sentence-transformers>=2.2.0",
-    "tiktoken>=0.4.0",
 ]
 
 [project.urls]

@@ -66,56 +66,26 @@ graft-train \
 ```
 
 ### Python API
-```python
-import torch
-from graft import ModelTrainer, TrainingConfig
-from graft.utils.loader import loader
 
-# Load your dataset
-trainloader, valloader, trainset, valset = loader(
-    dataset="cifar10",
-    trn_batch_size=128,
-    val_batch_size=128
-)
+For end-to-end training, the `graft-train` CLI above is the supported entry point
+(`graft.cli:main` builds the loaders, model, config, and trainer for you).
 
-# Configure training with GRAFT
-config = TrainingConfig(
-    numEpochs=100,
-    batch_size=128,
-    device="cuda" if torch.cuda.is_available() else "cpu",
-    model_name="resnet18",
-    dataset_name="cifar10",
-    trainloader=trainloader,
-    valloader=valloader,
-    trainset=trainset,
-    optimizer_name="sgd",
-    lr=0.1,
-    fraction=0.5,         # Use 50% of data per epoch
-    selection_iter=25,    # Reselect samples every 25 epochs
-    warm_start=True       # Train on full data initially
-)
-
-# Train with smart sampling
-trainer = ModelTrainer(config, trainloader, valloader, trainset)
-train_stats, val_stats = trainer.train()
-
-print(f"Best validation accuracy: {val_stats['best_acc']:.2%}")
-```
-
-### Advanced Usage
+To use the selection primitives directly:
 ```python
 from graft import feature_sel, sample_selection
-import torch.nn as nn
 
-# Custom model and data selection
-model = MyCustomModel()
-data3 = feature_sel(dataloader, batch_size=128, device="cuda")
+# Precompute per-batch low-rank features once (SVD or torch backend)
+data3 = feature_sel(dataloader, batch_size=128, device="cuda", decomp_type="numpy")
 
-# Manual sample selection
+# Select a representative subset for the current model state
 selected_indices = sample_selection(
     dataloader, data3, model, model.state_dict(),
-    batch_size=128, fraction=0.3, select_iter=10,
-    numEpochs=200, device="cuda", dataset="custom"
+    128,            # batch_size
+    0.3,            # fraction
+    10,             # sel_iter
+    200,            # numEpochs
+    "cuda",         # device
+    "cifar10",      # dataset_name
 )
 ```
 
@@ -171,24 +141,26 @@ selected_indices = sample_selection(
 graft-pytorch/
 ├── graft/
 │   ├── __init__.py          # Main package exports
-│   ├── trainer.py           # Training orchestration
+│   ├── cli.py               # graft-train command-line entry point
+│   ├── trainer.py           # Training orchestration (ModelTrainer, TrainingConfig)
 │   ├── genindices.py        # Sample selection algorithms
-│   ├── decompositions.py    # Feature decomposition
+│   ├── decompositions.py    # Feature decomposition (SVD + Fast MaxVol)
+│   ├── grad_dist.py         # Gradient-distance criterion
+│   ├── scheduler.py         # Learning-rate scheduling
 │   ├── models/              # Supported architectures
-│   │   ├── resnet.py        # ResNet implementations  
+│   │   ├── resnet.py        # ResNet implementations
+│   │   ├── ResNeXt.py       # ResNeXt implementations
 │   │   ├── efficientnet.py  # EfficientNet models
 │   │   └── BERT_model.py    # BERT for classification
 │   └── utils/               # Utility functions
 │       ├── loader.py        # Dataset loaders
 │       └── model_mapper.py  # Model selection
-├── tests/                   # Comprehensive test suite
-├── examples/                # Usage examples
-└── OIDC_SETUP.md           # Deployment configuration
+└── examples/                # Usage examples
 ```
 
 ## Contributing
 
-We welcome contributions! Please see our [contribution guidelines](CONTRIBUTING.md) for details.
+Contributions are welcome. Please open an issue or pull request on GitHub.
 
 ### Development Setup
 ```bash
@@ -199,11 +171,8 @@ cd GRAFT
 # Install in development mode
 pip install -e .[dev]
 
-# Run tests
-pytest tests/ -v
-
 # Run linting
-flake8 graft/ tests/
+flake8 graft/
 ```
 
 ## License
